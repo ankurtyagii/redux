@@ -1,0 +1,23 @@
+.movieForm {
+  margin: 40px;
+  padding: 5px;
+}
+.movieForm label {
+  font-size: 24px;
+  background-color: antiquewhite;
+}
+.select {
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.input {
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.button {
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-top: 40px;
+}
