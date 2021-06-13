@@ -1,55 +1,40 @@
 import { useState } from 'react';
-import { Form, Select, Input } from 'antd';
 
 import { connect } from 'react-redux';
 import { addMovie } from "../../redux/actions";
-import styles from './AddMovie.module.css';
 
 const AddMovie = (props) => {
     const { addMovie } = props;
     const [movie, setMovie] = useState({name: '', genre: ''});
-    const [tag, setTag] = useState([]);
 
-    function submitMovie() {
-        const prevMovieState = {...movie, genre: tag.join(',')};
-        addMovie(prevMovieState)
-    }
     return (
-        <Form className={styles.movieForm} >
-            <Form.Item label="Movie Name">
-                <Input
-                    className={styles.button}
+        <>
+            <div className="block">
+                <p className="text-3xl text-center font-extrabold">Movie name</p>
+                <input 
+                    type="text"
+                    className="focus:ring-blue-500 border-8 focus:border-blue-500 block w-60 p-5 lg:text-lg border-gray-300 rounded-md"
                     onChange={e => setMovie({...movie, name: e.target.value})}
                     value={movie.name}
+                    placeholder="movie name"
                     />
-            </Form.Item>
-            <Form.Item label="Movie Genre">
-
-              <Select className={styles.select}
-                mode="tags"
-                tokenSeparators={[',']}
-                size="large"
-                onChange={(val) => {
-                    return setTag(val);
-                }}
-                >
-                {tag.map((t) => {
-                    return (
-                        <Select.Option key={t} value={t}>
-                        {t}
-                    </Select.Option>
-                    );
-                })}
-                </Select>
-            </Form.Item>
-            <Form.Item>
-                <button
-                    className={styles.button} 
-                    onClick={submitMovie}>
+            </div>
+            <div>
+                <p>Movie Genre</p>
+                <input 
+                    type="text"
+                    className="focus:ring-blue-500 border-8 focus:border-blue-500 block w-60 p-5 lg:text-lg border-gray-300 rounded-md"
+                    onChange={e => setMovie({...movie, genre: e.target.value})}
+                    value={movie.genre}
+                    placeholder="movie name"
+                    />
+                </div>
+           
+                <button className="border-8"
+                    onClick={() => addMovie(movie)}>
                     Add Movie
                 </button>
-            </Form.Item>
-        </Form>
+            </>
     )
 }
 

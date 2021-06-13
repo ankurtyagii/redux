@@ -1,12 +1,11 @@
-import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE, WATCH_MOVIE } from "../actionTypes";
+import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE, WATCH_MOVIE, FILTER_MOVIE } from "../actionTypes";
 
 const initialState = {
-    movies: []
+    movies: [],
+    filteredMovies: []
 }
 
 function movie(state = initialState, action) {
-    console.log('action', action)
-    console.log('state', state)
     switch (action.type) {
         case ADD_MOVIE:
             const newMovie = {
@@ -17,23 +16,35 @@ function movie(state = initialState, action) {
             };
             const updatedState = {
                 ...state,
-                movies: [...state.movies, newMovie]
+                movies: [...state.movies, newMovie],
+                filteredMovies: [...state.movies, newMovie]
             }
             return updatedState
+
         case GET_MOVIES:
-            return action.payload  || [];
+            return {
+                movies: [...state.movies],
+                filteredMovies: [...state.movies]
+            } || [];
+
         case DELETE_MOVIE:
             return {
                 movies: [...state.movies.filter(x => x.id !== action.payload)]
             }
+
         case WATCH_MOVIE:
-            console.log(state.movies.map(x => {
-                if(x.id === action.payload) x.watch = !x.watch
-                return x
-            }))
-            // return {
-            //     movies: [...state.movies.map(x => (x.id === action.payload) ? x.watch = !x.watch : x.watch)]
-            // }
+            return {
+                movies: [...state.movies.map(x => {
+                        if(x.id === action.payload) x.watch = !x.watch
+                        return x
+                    })]
+            }
+        case FILTER_MOVIE:
+            
+            return {
+                movies: [...state.movies],
+                filteredMovies: [...state.movies.filter(x => x.genre.includes(action.payload))]
+            }
         default:
             return state
     }
