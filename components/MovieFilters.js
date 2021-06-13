@@ -1,8 +1,4 @@
 const MovieFilter = props => {
-
-    function resetFilters() {
-        props.resetFilter()
-    }
     return (
         <>
         <div className="block">
@@ -51,9 +47,14 @@ const MovieFilter = props => {
                 value={'Comedy'}
                 >Comedy</Radio>
         </Radio.Group> */}
+        <input 
+            onChange={(e) => props.searchMovies(e.target.value)}
+            type="text"
+            placeholder="Search..."
+           />
         <button 
             className='px-5 py-3 border border-black text-white bg-indigo-600 hover:bg-indigo-700'
-            onClick={() => {resetFilters()}}
+            onClick={() => {props.resetFilter()}}
             >Reset</button>
         </>
     )

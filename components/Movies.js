@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import MovieRow from './MovieRow';
 import MovieFilters from './MovieFilters';
-import { getMovies, deleteMovie, watchMovie, filterWithGenre } from '../redux/actions';
+import { getMovies, deleteMovie, watchMovie, filterWithGenre, searchMovie } from '../redux/actions';
 
 const Movies = props => {
-    const { movies, getMovies, deleteMovie, watchMovie, filterWithGenre } = props;
+    const { movies, getMovies, deleteMovie, watchMovie, filterWithGenre, searchMovie } = props;
     
     function removeMovie(id) {
         deleteMovie(id)
@@ -23,11 +23,16 @@ const Movies = props => {
         getMovies();
     }
     
+    function searchMovies(name) {
+        searchMovie(name);
+    }
+    
     return (
         <>
         <MovieFilters 
             filterMovie={filterMovie}
             resetFilter={resetFilter}
+            searchMovies={searchMovies}
         />
         <div className="table w-full bg-rose-300 bg-stripes bg-stripes-black rounded-md overflow">
             <div className="table-row-group">
@@ -61,7 +66,8 @@ const mapDispatchToProps = {
     getMovies,
     deleteMovie,
     watchMovie,
-    filterWithGenre
+    filterWithGenre,
+    searchMovie
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movies);

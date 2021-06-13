@@ -1,4 +1,4 @@
-import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE, WATCH_MOVIE, FILTER_MOVIE } from "../actionTypes";
+import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE, WATCH_MOVIE, FILTER_MOVIE, SEARCH_MOVIE } from "../actionTypes";
 
 const initialState = {
     movies: [],
@@ -44,6 +44,12 @@ function movie(state = initialState, action) {
             return {
                 movies: [...state.movies],
                 filteredMovies: [...state.movies.filter(x => x.genre.includes(action.payload))]
+            }
+        case SEARCH_MOVIE:
+            
+            return {
+                movies: [...state.movies],
+                filteredMovies: [...state.movies.filter(x => x.name.includes(action.payload))]
             }
         default:
             return state

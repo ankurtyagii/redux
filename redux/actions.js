@@ -1,4 +1,4 @@
-import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE, WATCH_MOVIE, FILTER_MOVIE } from './actionTypes';
+import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE, WATCH_MOVIE, FILTER_MOVIE, SEARCH_MOVIE } from './actionTypes';
 
 let nextMovieId = 0;
 
@@ -27,5 +27,10 @@ export const watchMovie = (id) => ({
 
 export const filterWithGenre = (type) => ({
     type: FILTER_MOVIE,
+    payload: type
+})
+
+export const searchMovie = (type) => ({
+    type: SEARCH_MOVIE,
     payload: type
 })
