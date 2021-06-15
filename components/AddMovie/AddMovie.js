@@ -10,7 +10,7 @@ const AddMovie = (props) => {
     return (
         <>
             <div className="block">
-                <p className="text-3xl text-center font-extrabold">Movie name</p>
+                <p className="text-3xl text-center font-extrabold">Movie List</p>
                 <input 
                     type="text"
                     className="focus:ring-blue-500 border-8 focus:border-blue-500 block w-60 p-5 lg:text-lg border-gray-300 rounded-md"

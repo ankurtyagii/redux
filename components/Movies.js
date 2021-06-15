@@ -42,7 +42,7 @@ const Movies = props => {
                 <div className="table-cell border-4">Genre</div>
                 <div className="table-cell border-4">Delete</div>
             </div>
-            {movies ? movies.map(item => {
+            {movies ? movies.sort(function(a,b){return a.watch-b.watch}).map(item => {
                 return <>
             
                         <MovieRow
