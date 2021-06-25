@@ -45,12 +45,11 @@ const Movies = props => {
             </div>
             {movies ? movies.sort(function(a,b){return a.watch-b.watch}).map(item => {
                 return <>
-            
-                        <MovieRow
-                            movie={item}
-                            removeMovie={removeMovie} 
-                            checkAsWatched={checkAsWatched}
-                            />
+                    <MovieRow
+                        movie={item}
+                        removeMovie={removeMovie} 
+                        checkAsWatched={checkAsWatched}
+                    />
                 </>
         }) : 'N/A'}
             </div>

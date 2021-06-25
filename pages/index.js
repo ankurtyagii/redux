@@ -6,7 +6,6 @@ import Movies from '../components/Movies';
 import store from '../redux/store'
 
 const Movie = () => {
-
     return (
       <Provider store={store}>
         <Links></Links>
