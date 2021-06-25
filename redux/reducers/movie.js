@@ -8,10 +8,16 @@ const initialState = {
 function movie(state = initialState, action) {
     switch (action.type) {
         case ADD_MOVIE:
+            if(!action.payload.movie.name?.length || 
+                !action.payload.movie.name?.length) return {
+                ...state,
+                movies: [...state.movies],
+                filteredMovies: [...state.movies]
+            };
             const newMovie = {
                 id: new Date().getUTCMilliseconds(),
                 name: action.payload.movie.name,
-                genre: action.payload.movie.genre,
+                genre: action.payload.movie.genre.toLowerCase(),
                 watch: false
             };
             const updatedState = {
@@ -20,7 +26,11 @@ function movie(state = initialState, action) {
                 filteredMovies: [...state.movies, newMovie]
             }
             return updatedState
-
+        case WATCH_MOVIE:
+            state.movies.map(x => {
+                if(x.id === action.payload) x.watch = !x.watch
+                return x
+            })
         case GET_MOVIES:
             return {
                 movies: [...state.movies],
@@ -29,21 +39,14 @@ function movie(state = initialState, action) {
 
         case DELETE_MOVIE:
             return {
-                movies: [...state.movies.filter(x => x.id !== action.payload)]
-            }
-
-        case WATCH_MOVIE:
-            return {
-                movies: [...state.movies.map(x => {
-                        if(x.id === action.payload) x.watch = !x.watch
-                        return x
-                    })]
+                movies: [...state.movies.filter(x => x.id !== action.payload)],
+                filteredMovies: [...state.movies.filter(x => x.id !== action.payload)]
             }
         case FILTER_MOVIE:
-            
+            const genre = action.payload.toLowerCase();
             return {
                 movies: [...state.movies],
-                filteredMovies: [...state.movies.filter(x => x.genre.includes(action.payload))]
+                filteredMovies: [...state.movies.filter(x => x.genre.includes(genre))]
             }
         case SEARCH_MOVIE:
             

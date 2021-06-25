@@ -2,7 +2,7 @@ import { delay, takeEvery, put } from 'redux-saga/effects'
 import { GET_MOVIES } from './actionTypes';
 
 export function* fetchMovies(action) {
-    yield delay(5000);
+    yield delay(3000);
     yield put({ type: 'GET_MOVIES' })
 }
 

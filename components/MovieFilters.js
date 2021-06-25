@@ -1,4 +1,7 @@
 const MovieFilter = props => {
+    const resetButtonsAndList = () => {
+        props.resetFilter()
+    }
     return (
         <>
         <div className="block">
@@ -8,9 +11,10 @@ const MovieFilter = props => {
                     <input 
                         type="radio" 
                         className="form-radio" 
-                        name="radio" 
+                        name="filter" 
                         value="Horror"
                         onChange={() => {props.filterMovie('Horror')}}
+                        
                         />
                     <span className="ml-2">Horror</span>
                 </div>
@@ -18,9 +22,10 @@ const MovieFilter = props => {
                     <input 
                         type="radio" 
                         className="form-radio" 
-                        name="radio" 
+                        name="filter" 
                         value="Comedy"
-                        onChange={() => {props.filterMovie('Comedy')}} 
+                        onChange={() => {props.filterMovie('Comedy')}}
+                        
                         />
                     <span className="ml-2">Comedy</span>
                 </div>
@@ -28,9 +33,10 @@ const MovieFilter = props => {
                         <input 
                             type="radio" 
                             className="form-radio" 
-                            name="radio" 
+                            name="filter" 
                             value="Romance" 
                             onChange={() => {props.filterMovie('Romance')}}
+                            
                         />
                         <span className="ml-2">Romance</span>
                 </div>
@@ -54,7 +60,7 @@ const MovieFilter = props => {
            />
         <button 
             className='px-5 py-3 border border-black text-white bg-indigo-600 hover:bg-indigo-700'
-            onClick={() => {props.resetFilter()}}
+            onClick={() => {resetButtonsAndList()}}
             >Reset</button>
         </>
     )

@@ -5,7 +5,8 @@ import MovieFilters from './MovieFilters';
 import { getMovies, deleteMovie, watchMovie, filterWithGenre, searchMovie } from '../redux/actions';
 
 const Movies = props => {
-    const { movies, getMovies, deleteMovie, watchMovie, filterWithGenre, searchMovie } = props;
+    const { movies, getMovies, deleteMovie, watchMovie, 
+        filterWithGenre, searchMovie } = props;
     
     function removeMovie(id) {
         deleteMovie(id)
@@ -15,8 +16,8 @@ const Movies = props => {
         watchMovie(id)
     }
     
-    function filterMovie(type) {
-        filterWithGenre(type)
+    function filterMovie(value) {
+        filterWithGenre(value)
     }
 
     function resetFilter() {
