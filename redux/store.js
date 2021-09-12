@@ -1,17 +1,10 @@
-import { createStore, applyMiddleware } from 'redux'
-// import createSagaMiddleware from 'redux-saga'
+import { configureStore } from '@reduxjs/toolkit';
+import movieSlice from './slices/MovieSlice';
 
-import rootReducer from "./reducers/index";
-// import saga from './sagas'
+const store = configureStore({
+    reducer: {
+        movie: movieSlice
+    }
+})
 
-// const sagaMiddleware = createSagaMiddleware()
-
-// const store = createStore(
-//     rootReducer,
-//     applyMiddleware(sagaMiddleware)
-// )
-  
-// sagaMiddleware.run(saga)
-
-// export default store;
-export default createStore(rootReducer);
+export default store;

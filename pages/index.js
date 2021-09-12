@@ -1,18 +1,16 @@
 import { Provider } from 'react-redux'
-
-import AddMovie from '../components/AddMovie/AddMovie';
-import Links from '../components/Links';
-import Movies from '../components/Movies';
 import store from '../redux/store'
 
+import Links from '../components/Links';
+import Movies from '../components/MovieList/Movies';
+
 const Movie = () => {
-    return (
-      <Provider store={store}>
-        <Links></Links>
-        <AddMovie></AddMovie>
-        <Movies></Movies>
-      </Provider>
-    )
+  return (
+    <Provider store={store}>
+      <Links />
+      <Movies />
+    </Provider>
+  )
 }
 
 export default Movie;

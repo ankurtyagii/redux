@@ -1,16 +1,14 @@
-import Link from 'next/link'
+import LinkComponent from './Link'
+import cssConfig from '../utils/cssConfig'
 
-function Links() {
-    return <ul>
-            <li>
-                <Link href="/Genre?genre=Romance">Romance Genre</Link>
-            </li>
-            <li>
-                <Link href="/Genre?genre=Horror">Horror Genre</Link>
-            </li>
-            <li>
-                <Link href="/Genre?genre=Comedy">Comedy Genre</Link>
-            </li>
-        </ul>
+const Links = (props) => {
+    return (
+        <div className={cssConfig.links}>
+            <LinkComponent link="/" type="Home" />
+            {!props.type && <LinkComponent link="/genre?genre=Horror" type="Horror" />}
+            {!props.type && <LinkComponent link="/genre?genre=Romance" type="Romance" />}
+            {!props.type && <LinkComponent link="/genre?genre=Comedy" type="Comedy" />}
+        </div> 
+    )
 }
 export default Links

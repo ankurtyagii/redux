@@ -1,0 +1,1 @@
+export const validateTag = (event, tags) => event.key === "Enter" && event.target.value !== "" && !tags.includes(event.target.value.trim().toLowerCase())
